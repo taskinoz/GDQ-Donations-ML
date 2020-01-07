@@ -1,11 +1,11 @@
 const fs = require('fs');
 
 var files = JSON.parse(fs.readFileSync("gamesdonequick.json"));
-const customLength = 8000;
+const customLength = Math.floor(Math.random() * files.length/2);
 var filename;
 if (customLength){
   size = customLength;
-  filename = `gdqtext-${size}length.txt`;
+  filename = `gdqtext-random.txt`;
 }
 else {
   size = files.length;
@@ -16,8 +16,11 @@ else {
 var text="";
 
 
-for (var i = 6000; i < size; i++) {
-  text += files[i].text+"\n";
+for (var i = 0; i < size; i++) {
+  if ((Math.floor(Math.random() * 50) == 7)) {
+    text += files[i].text+"\n";
+    console.log(files[i].text);
+  }
 }
 
 // console.log(files);
