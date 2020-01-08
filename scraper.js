@@ -20,8 +20,8 @@ function requestQuote(i) {
     });
     res.on('end', function () {
       const $ = cheerio.load(data);
-      apiData[counter] = $($('td')[0]).text().toString();
-      console.log($($('td')[0]).text().toString());
+      apiData[counter] = $('[class*="commentstate"]').text().toString();
+      console.log($('[class*="commentstate"]').text().toString());
     });
 });
 request.on('error', function (e) {
@@ -33,10 +33,11 @@ request.end();
 }
 
 function check() {
-  if (counter < 602170+20) {
+  if (counter < end) {
     setTimeout(function() {
       requestQuote(counter);
-    },1000);
+    },2000);
+    fs.writeFileSync("scraped.json",JSON.stringify(apiData));
   }
   else {
     fs.writeFileSync("scraped.json",JSON.stringify(apiData));
