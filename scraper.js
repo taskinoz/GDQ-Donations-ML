@@ -77,10 +77,10 @@ function check() {
     setTimeout(function() {
       requestQuote(begin);
     },2000);
-    fs.writeFileSync("scraped.json",JSON.stringify(apiData));
+    fs.writeFileSync("scrapedv2.json",JSON.stringify(apiData));
   }
   else {
-    fs.writeFileSync("scraped.json",JSON.stringify(apiData));
+    fs.writeFileSync("scrapedv2.json",JSON.stringify(apiData));
   }
 }
 
