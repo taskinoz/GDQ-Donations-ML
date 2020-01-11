@@ -10,7 +10,7 @@ const options ={
 };
 var counter = -1;
 var begin = 602170;
-var end = 631913;
+var end = 641557;
 
 function stringToDate(input) {
   //input = "January 10th, 2020, 11:18:42 AM";
@@ -77,7 +77,7 @@ function check() {
   if (begin < end) {
     setTimeout(function() {
       requestQuote(begin);
-    },2000);
+    },1500);
     fs.writeFileSync("scrapedv3.json",JSON.stringify(apiData));
   }
   else {
