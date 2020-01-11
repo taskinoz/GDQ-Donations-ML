@@ -55,6 +55,7 @@ function requestQuote(i) {
     res.on('end', function () {
       const $ = cheerio.load(data);
       let obj={};
+      obj.username = $('h2.text-center a').text();
       obj.text = ($('[class*="commentstate"]').text().toString()).replace(/\n/g,"");
       obj.id = begin-1;
       obj.time = $('h2.text-center .datetime').text();
@@ -77,10 +78,10 @@ function check() {
     setTimeout(function() {
       requestQuote(begin);
     },2000);
-    fs.writeFileSync("scrapedv2.json",JSON.stringify(apiData));
+    fs.writeFileSync("scrapedv3.json",JSON.stringify(apiData));
   }
   else {
-    fs.writeFileSync("scrapedv2.json",JSON.stringify(apiData));
+    fs.writeFileSync("scrapedv3.json",JSON.stringify(apiData));
   }
 }
 
