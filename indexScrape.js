@@ -1,14 +1,16 @@
 const fs = require('fs');
 
-var files = JSON.parse(fs.readFileSync("scraped.json"));
-var filename = "scraped.txt";
+var files = JSON.parse(fs.readFileSync("scrapedv3.json"));
+var filename = "scrapedv3.txt";
 var txt;
 
-602170
-611022
+//console.log(files[0].text);
 
-for (var i = 602170; i < 611022; i++) {
-  txt+=files[i]
+for (var i = 0; i < files.length-1; i++) {
+  console.log(i);
+  console.log(files[i].text);
+  txt+=files[i].text+"\n";
 }
+
 
 fs.writeFileSync(filename,txt);
